@@ -13,6 +13,7 @@ namespace API.Extensions
         {
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IBasketRepository, BasketRepository>();
             // Display list of errors in case of 500 response
             services.Configure<ApiBehaviorOptions>(options =>
             {
