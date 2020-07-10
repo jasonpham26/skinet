@@ -15,6 +15,7 @@ namespace API.Extensions
 
             return await input.Users.Include(x => x.Address).SingleOrDefaultAsync(x => x.Email == email);
         }
+
         public static async Task<AppUser> FindByEmailFromClaimsPrinciple(this UserManager<AppUser> input, ClaimsPrincipal user)
         {
             var email = user?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
@@ -22,6 +23,4 @@ namespace API.Extensions
             return await input.Users.SingleOrDefaultAsync(x => x.Email == email);
         }
     }
-
-
 }

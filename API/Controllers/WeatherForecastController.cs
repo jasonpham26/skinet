@@ -8,22 +8,13 @@ using Microsoft.Extensions.Logging;
 namespace API.Controllers
 {
     [ApiController]
-    [ApiExplorerSettings(IgnoreApi = true)]
     [Route("[controller]")]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
-            "Freezing",
-            "Bracing",
-            "Chilly",
-            "Cool",
-            "Mild",
-            "Warm",
-            "Balmy",
-            "Hot",
-            "Sweltering",
-            "Scorching"
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
@@ -43,7 +34,7 @@ namespace API.Controllers
                 TemperatureC = rng.Next(-20, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
-                .ToArray();
+            .ToArray();
         }
     }
 }

@@ -39,7 +39,6 @@ namespace API.Controllers
                 Token = _tokenService.CreateToken(user),
                 DisplayName = user.DisplayName
             };
-
         }
 
         [HttpGet("emailexists")]
@@ -53,6 +52,7 @@ namespace API.Controllers
         public async Task<ActionResult<AddressDto>> GetUserAddress()
         {
             var user = await _userManager.FindByUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
+
             return _mapper.Map<Address, AddressDto>(user.Address);
         }
 
@@ -61,9 +61,13 @@ namespace API.Controllers
         public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto address)
         {
             var user = await _userManager.FindByUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
+
             user.Address = _mapper.Map<AddressDto, Address>(address);
+
             var result = await _userManager.UpdateAsync(user);
+
             if (result.Succeeded) return Ok(_mapper.Map<Address, AddressDto>(user.Address));
+
             return BadRequest("Problem updating the user");
         }
 
@@ -91,8 +95,9 @@ namespace API.Controllers
         {
             if (CheckEmailExistsAsync(registerDto.Email).Result.Value)
             {
-                return new BadRequestObjectResult(new ApiValidationErrorResponse { Errors = new[] { "Email address is in use" } });
+                return new BadRequestObjectResult(new ApiValidationErrorResponse{Errors = new []{"Email address is in use"}});
             }
+
             var user = new AppUser
             {
                 DisplayName = registerDto.DisplayName,
