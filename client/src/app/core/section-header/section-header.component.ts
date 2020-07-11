@@ -5,14 +5,15 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-section-header',
   templateUrl: './section-header.component.html',
-  styleUrls: ['./section-header.component.scss'],
+  styleUrls: ['./section-header.component.scss']
 })
 export class SectionHeaderComponent implements OnInit {
   breadcrumb$: Observable<any[]>;
 
-  constructor(private bcService: BreadcrumbService) {}
+  constructor(private bcService: BreadcrumbService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.breadcrumb$ = this.bcService.breadcrumbs$;
   }
+
 }

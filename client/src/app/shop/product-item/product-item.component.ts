@@ -5,16 +5,18 @@ import { BasketService } from 'src/app/basket/basket.service';
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
-  styleUrls: ['./product-item.component.scss'],
+  styleUrls: ['./product-item.component.scss']
 })
 export class ProductItemComponent implements OnInit {
   @Input() product: IProduct;
 
-  constructor(private basketSerivce: BasketService) {}
+  constructor(private basketService: BasketService) { }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+  }
 
   addItemToBasket() {
-    this.basketSerivce.addItemToBasket(this.product);
+    this.basketService.addItemToBasket(this.product);
   }
+
 }
