@@ -18,15 +18,14 @@ namespace Infrastructure.Identity
                     UserName = "bob@test.com",
                     Address = new Address
                     {
-                        FirstName = "Bob",
-                        LastName = "Bobbity",
-                        Street = "10 The Street",
-                        City = "New York",
-                        State = "NY",
-                        Zipcode = "90210"
+                    FirstName = "Bob",
+                    LastName = "Bobbity",
+                    Street = "10 The Street",
+                    City = "Brisbane",
+                    State = "QLD",
+                    Zipcode = "4000"
                     }
                 };
-
                 await userManager.CreateAsync(user, "Pa$$w0rd");
             }
         }
